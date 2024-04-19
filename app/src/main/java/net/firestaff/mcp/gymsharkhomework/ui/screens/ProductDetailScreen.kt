@@ -30,7 +30,7 @@ fun ProductDetail(navController: NavController, productJson: String) {
     val product = gson.fromJson(decodedJson, Product::class.java)
 
     TopAppBarScaffold(
-        title = product.name,
+        title = product.title,
         navController = navController,
         content = {
             ProductDetailContent(product)
@@ -47,7 +47,7 @@ fun ProductDetailContent(
         shape = RoundedCornerShape(10.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = "Name: ${product.name}")
+            Text(text = "Name: ${product.title}")
             Spacer(modifier = Modifier.height(8.dp))
 
             if (product.description.isNotEmpty()) {
@@ -55,21 +55,21 @@ fun ProductDetailContent(
                 Spacer(modifier = Modifier.height(8.dp))
             }
 
-            Text(text = "Price: ${product.salePrice.amount} ${product.salePrice.currency}")
+            Text(text = "Price: ${product.price}")
             Spacer(modifier = Modifier.height(8.dp))
 
-            if (product.url.isNotEmpty()) {
-                val painter = rememberImagePainter(
-                    request = ImageRequest.Builder(LocalContext.current)
-                        .data(transformImageUrl(product.url))
-                        .build()
-                )
+            if (product.sku.isNotEmpty()) {
+                //val painter = rememberImagePainter(
+                //    request = ImageRequest.Builder(LocalContext.current)
+                //        .data(transformImageUrl(product.url))
+                //        .build()
+                //)
 
-                Image(
-                    painter = painter,
-                    contentDescription = "Product Image for ${product.name}",
-                    modifier = Modifier.fillMaxWidth()
-                )
+                //Image(
+                //    painter = painter,
+                //    contentDescription = "Product Image for ${product.title}",
+                //    modifier = Modifier.fillMaxWidth()
+                //)
             }
 
         }

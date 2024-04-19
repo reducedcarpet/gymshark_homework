@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ListTile(
+fun ProductListTile(
     title: String,
     subtitle: String? = null,
     leading: @Composable (() -> Unit)? = null,

@@ -9,17 +9,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import net.firestaff.mcp.gymsharkhomework.ui.CategoryNavigation
+import net.firestaff.mcp.gymsharkhomework.ui.ProductNavigation
 import net.firestaff.mcp.gymsharkhomework.ui.theme.GymsharkHomeworkTheme
-import net.firestaff.mcp.gymsharkhomework.viewmodels.CategoryViewModel
+import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewModel: CategoryViewModel by viewModels()
-        viewModel.fetchCategories()
+        val viewModel: ProductViewModel by viewModels()
+        viewModel.fetchCategories(this)
 
         setContent {
             GymsharkHomeworkTheme {
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CategoryNavigation(navController, viewModel)
+                    ProductNavigation(navController, viewModel)
                 }
             }
         }

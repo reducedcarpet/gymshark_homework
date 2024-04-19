@@ -2,20 +2,21 @@ package net.firestaff.mcp.gymsharkhomework.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-import net.firestaff.mcp.gymsharkhomework.models.Category
+import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
 import net.firestaff.mcp.gymsharkhomework.ui.lists.CategoryList
+import net.firestaff.mcp.gymsharkhomework.ui.lists.ProductList
 
 @Composable
 fun MainScreen(
     navController: NavController,
-    categories: List<Category>
+    products: List<Product>
 ) {
     TopAppBarScaffold(
         title = "Snack List",
         navController = navController,
         content = {
-            MainScreenContent(navController, categories)
+            MainScreenContent(navController, products)
         }
     )
 }
@@ -23,10 +24,10 @@ fun MainScreen(
 @Composable
 fun MainScreenContent(
     navController: NavController,
-    categories: List<Category>
+    products: List<Product>
 ) {
-    CategoryList(
-        categories,
+    ProductList(
+        products,
         navController
     )
 }

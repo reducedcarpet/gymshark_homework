@@ -8,14 +8,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import net.firestaff.mcp.gymsharkhomework.ui.screens.MainScreen
 import net.firestaff.mcp.gymsharkhomework.ui.screens.ProductDetail
-import net.firestaff.mcp.gymsharkhomework.viewmodels.CategoryViewModel
+import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
 @Composable
-fun CategoryNavigation(navController: NavHostController, viewModel: CategoryViewModel) {
-    val categories by viewModel.categories.observeAsState(initial = emptyList())
+fun ProductNavigation(navController: NavHostController, viewModel: ProductViewModel) {
+    val products by viewModel.products.observeAsState(initial = emptyList())
 
     NavHost(navController = navController, startDestination = "mainScreen") {
-        composable("mainScreen") { MainScreen(navController, categories) }
+        composable("mainScreen") { MainScreen(navController, products) }
         composable("productDetail/{productJson}") { backStackEntry ->
             val productJson = backStackEntry.arguments?.getString("productJson") ?: ""
             ProductDetail(navController, productJson)

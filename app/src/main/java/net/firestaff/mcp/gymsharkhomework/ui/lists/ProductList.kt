@@ -8,23 +8,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.google.gson.Gson
-import net.firestaff.mcp.gymsharkhomework.models.Category
-import net.firestaff.mcp.gymsharkhomework.ui.ListTile
-import net.firestaff.mcp.gymsharkhomework.ui.ProductImage
+import net.firestaff.mcp.gymsharkhomework.models.Product
+import net.firestaff.mcp.gymsharkhomework.ui.ProductListTile
 import java.net.URLEncoder
 
 @Composable
-fun ProductList(item: Category, navController: NavController) {
+fun ProductList(products: List<Product>, navController: NavController) {
 
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
-            text = "Category: " + item.name,
+            text = "Products: " ,
             modifier = Modifier.padding(vertical = 16.dp)
         )
-        item.products.forEach { product ->
-            ListTile(
-                title = product.name,
-                trailing = { Text(product.salePrice.amount + " " + product.salePrice.currency) },
+        products.forEach { product ->
+            ProductListTile(
+                title = product.title,
+                trailing = { Text(product.price.toString()) },
                 onClick = {
                     val gson = Gson()
                     val productJson = gson.toJson(product)
@@ -32,7 +31,7 @@ fun ProductList(item: Category, navController: NavController) {
                         "productDetail/${URLEncoder.encode(productJson, "UTF-8")}"
                     )
                 },
-                leading = { ProductImage(url = product.url, productName = product.name) }
+                //leading = { ProductImage(url = product.url, productName = product.title) }
             )
         }
     }

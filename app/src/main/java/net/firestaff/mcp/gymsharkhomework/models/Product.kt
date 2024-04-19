@@ -2,10 +2,10 @@ package net.firestaff.mcp.gymsharkhomework.models
 
 data class Product(
     val id: String,
-    val categoryId: String,
-    val name: String,
-    val url: String,
+    val sku: String,
+    val title: String,
+    val handle: String,
     val description: String,
-    val salePrice: SalePrice
+    val price: Int
 )
 
