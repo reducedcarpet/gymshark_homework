@@ -7,30 +7,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import coil.size.Precision
 import coil.size.Scale
 import net.firestaff.mcp.gymsharkhomework.R
+import net.firestaff.mcp.gymsharkhomework.models.Media
 
 @Composable
-fun NetworkImage(url: String) {
-    val context = LocalContext.current
-    val request = ImageRequest.Builder(context)
-        .data(url)
-        .allowConversionToBitmap(true)
-        .crossfade(true)
-        .scale(Scale.FILL)
-        .precision(Precision.EXACT)
-        .build()
-
-    val painter = rememberImagePainter(request)
-
-    println("URL: $url")
-
+fun NetworkImage(media: Media, modifier: Modifier = Modifier) {
     AsyncImage(
-        model = url,
-        contentDescription = "Product Image",
-        modifier = Modifier.fillMaxWidth()
+        model = media.src, //rememberAsyncImagePainter(model = url),
+        contentDescription = media.alt,
+        modifier = modifier.fillMaxWidth()
     )
 }

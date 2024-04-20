@@ -15,7 +15,7 @@ data class Product(
     val labels: List<String>,
     val colour: String,
     val price: Double,
-    //val compareAtPrice: Double,
+    val compareAtPrice: Double?,
     val discountPercentage: Double,
     val featuredMedia: Media,
     val media: List<Media>,

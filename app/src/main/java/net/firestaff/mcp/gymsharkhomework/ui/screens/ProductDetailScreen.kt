@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -30,15 +32,23 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import kotlinx.coroutines.delay
+import net.firestaff.mcp.gymsharkhomework.data.defaultAspectRatio
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.transformImageUrl
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.SimpleHtmlText
+import net.firestaff.mcp.gymsharkhomework.ui.ThumbnailRow
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
+import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer2
+import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer8
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
 @Composable
-fun ProductDetail(navController: NavController, productId: String, productViewModel: ProductViewModel) {
+fun ProductDetail(
+    navController: NavController,
+    productId: String,
+    productViewModel: ProductViewModel
+) {
     var isLoading by remember { mutableStateOf(true) }
     var product by remember { mutableStateOf<Product?>(null) }
 
@@ -69,49 +79,33 @@ fun ProductDetail(navController: NavController, productId: String, productViewMo
 fun ProductDetailContent(
     product: Product
 ) {
+    var mainImage by remember { mutableStateOf(product.featuredMedia) }
     val scrollState = rememberScrollState()
 
-    Card(
-        modifier = Modifier.padding(16.dp),
-        shape = RoundedCornerShape(10.dp)
-    ) {
-        Column(modifier = Modifier.padding(16.dp).verticalScroll(scrollState)) {
-            Text(text = "Name: ${product.title}")
-            Spacer(modifier = Modifier.height(8.dp))
+    val configuration = LocalConfiguration.current
+    val screenWidth = configuration.screenWidthDp
+    val imageHeight = screenWidth / defaultAspectRatio
 
-            if (product.description.isNotEmpty()) {
-                SimpleHtmlText("Description: ${product.description}")
-                Spacer(modifier = Modifier.height(8.dp))
-            }
-
-            Text(text = "Price: ${product.price}")
-            Spacer(modifier = Modifier.height(8.dp))
-
-            if (product.featuredMedia.src.isNotEmpty()) {
-                Text(text = "Image:")
-                val painter = rememberImagePainter(
-                    request = ImageRequest.Builder(LocalContext.current)
-                        .data(transformImageUrl(product.featuredMedia.src))
-                        .build()
-                )
-
-                Image(
-                    painter = painter,
-                    contentDescription = "Product Image for ${product.title}",
-                    modifier = Modifier.fillMaxWidth()
-                )
-
-                NetworkImage(product.featuredMedia.src)
-            }
-
-            Text(text = "Post Image:")
+    Column(modifier = Modifier.verticalScroll(scrollState)) {
+        NetworkImage(mainImage, modifier = Modifier.fillMaxWidth().requiredHeight(imageHeight.dp))
+        spacer2()
+        ThumbnailRow(product.media) { image ->
+            mainImage = image
         }
-    }
-}
 
-@Composable
-fun CircularProgressIndicator(modifier: Modifier) {
-    Box(modifier = modifier) {
-        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        Text(text = product.title)
+        spacer8()
+        Text(text = product.colour)
+        spacer8()
+
+        if (product.description.isNotEmpty()) {
+            SimpleHtmlText("Description: ${product.description}")
+            spacer8()
+        }
+
+        Text(text = "Price: ${product.price}")
+        spacer8()
+
     }
+
 }

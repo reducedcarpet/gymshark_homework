@@ -2,8 +2,10 @@ package net.firestaff.mcp.gymsharkhomework.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import net.firestaff.mcp.gymsharkhomework.R
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
 import net.firestaff.mcp.gymsharkhomework.ui.lists.ProductList
@@ -22,7 +24,7 @@ fun MainScreen(
     val products = productViewModel.products.observeAsState(initial = mapOf()).value
 
     TopAppBarScaffold(
-        title = "Snack List",
+        title = stringResource(id = R.string.products),
         navController = navController,
         content = {
             MainScreenContent(navController, products)

@@ -36,8 +36,7 @@ fun ProductList(products: Map<String, Product>, navController: NavController) {
                 val product = products.values.elementAt(index)
 
                 ProductListTile(
-                    title = product.title,
-                    trailing = { Text(product.price.toString()) },
+                    product = product,
                     onClick = {
                         navController.navigate(
                             "productDetail/${product.id}"
