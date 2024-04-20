@@ -12,12 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import com.google.gson.Gson
 import net.firestaff.mcp.gymsharkhomework.R
 import net.firestaff.mcp.gymsharkhomework.models.Product
-import net.firestaff.mcp.gymsharkhomework.ui.ProductImage
 import net.firestaff.mcp.gymsharkhomework.ui.ProductListTile
-import java.net.URLEncoder
 
 @Composable
 fun ProductList(products: Map<String, Product>, navController: NavController) {

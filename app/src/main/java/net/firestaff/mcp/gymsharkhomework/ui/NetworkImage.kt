@@ -20,6 +20,6 @@ fun NetworkImage(media: Media, modifier: Modifier = Modifier) {
     AsyncImage(
         model = media.src, //rememberAsyncImagePainter(model = url),
         contentDescription = media.alt,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
     )
 }

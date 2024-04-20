@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.glide)
     implementation(libs.coil.compose)
+    //implementation(libs.bundles.accompanist)
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation(libs.compose.runtime)
     implementation("androidx.compose.runtime:runtime-livedata")
@@ -74,6 +75,8 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("com.google.dagger:hilt-android")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
+    implementation("com.google.accompanist:accompanist-pager:0.34.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

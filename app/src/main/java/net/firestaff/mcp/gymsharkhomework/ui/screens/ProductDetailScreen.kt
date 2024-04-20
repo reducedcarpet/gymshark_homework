@@ -1,5 +1,6 @@
 package net.firestaff.mcp.gymsharkhomework.ui.screens
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -26,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -33,13 +37,16 @@ import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import kotlinx.coroutines.delay
 import net.firestaff.mcp.gymsharkhomework.data.defaultAspectRatio
+import net.firestaff.mcp.gymsharkhomework.models.Media
 import net.firestaff.mcp.gymsharkhomework.models.Product
+import net.firestaff.mcp.gymsharkhomework.services.calculateMediaHeight
 import net.firestaff.mcp.gymsharkhomework.services.transformImageUrl
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.SimpleHtmlText
 import net.firestaff.mcp.gymsharkhomework.ui.ThumbnailRow
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
 import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer2
+import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer4
 import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer8
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
@@ -53,10 +60,7 @@ fun ProductDetail(
     var product by remember { mutableStateOf<Product?>(null) }
 
     LaunchedEffect(key1 = productId) {
-        delay(400) // Simulate network delay
-
         product = productViewModel.getProduct(productId)
-
         isLoading = false
     }
 
@@ -75,20 +79,39 @@ fun ProductDetail(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ProductDetailContent(
     product: Product
 ) {
     var mainImage by remember { mutableStateOf(product.featuredMedia) }
     val scrollState = rememberScrollState()
+    val pagerState = rememberPagerState(pageCount = { product.media.size })
 
     val configuration = LocalConfiguration.current
-    val screenWidth = configuration.screenWidthDp
-    val imageHeight = screenWidth / defaultAspectRatio
+    val screenWidthDp = configuration.screenWidthDp.dp
+    val imageHeight = calculateMediaHeight(screenWidthDp)
+
+    LaunchedEffect(pagerState.currentPage) {
+        mainImage = product.media[pagerState.currentPage]
+    }
 
     Column(modifier = Modifier.verticalScroll(scrollState)) {
-        NetworkImage(mainImage, modifier = Modifier.fillMaxWidth().requiredHeight(imageHeight.dp))
-        spacer2()
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(imageHeight.dp)
+        ) { page ->
+            val media = product.media[page]
+            NetworkImage(
+                media,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(imageHeight.dp)
+            )
+        }
+        spacer4()
         ThumbnailRow(product.media) { image ->
             mainImage = image
         }
