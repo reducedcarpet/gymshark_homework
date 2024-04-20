@@ -15,6 +15,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -25,8 +26,8 @@ fun TopAppBarScaffold(
     content: @Composable () -> Unit
 ) {
     val topAppBarColors = TopAppBarDefaults.topAppBarColors(
-        containerColor = MaterialTheme.colorScheme.primary,
-        titleContentColor = MaterialTheme.colorScheme.onPrimary,
+        containerColor = MaterialTheme.colorScheme.tertiary,
+        titleContentColor = MaterialTheme.colorScheme.onTertiary,
         actionIconContentColor = MaterialTheme.colorScheme.onPrimary,
         navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
     )
@@ -38,7 +39,8 @@ fun TopAppBarScaffold(
                     Text(
                         title,
                         style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp
                         )
                     )
                 },

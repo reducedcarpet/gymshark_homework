@@ -4,7 +4,6 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.navigation.compose.rememberNavController
-import net.firestaff.mcp.gymsharkhomework.models.Category
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.models.SalePrice
 import net.firestaff.mcp.gymsharkhomework.ui.lists.CategoryList

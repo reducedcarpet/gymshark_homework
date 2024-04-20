@@ -26,8 +26,7 @@ fun ProductListTile(
     onClick: () -> Unit
 ) {
     Card(
-        modifier = Modifier.padding(16.dp),
-        shape = RoundedCornerShape(10.dp),
+        shape = RoundedCornerShape(4.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.secondary,
             contentColor = MaterialTheme.colorScheme.onPrimary,
@@ -38,15 +37,13 @@ fun ProductListTile(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable(onClick = onClick)
-                .padding(16.dp),
+                .clickable(onClick = onClick),
             verticalAlignment = Alignment.CenterVertically
         ) {
             leading?.invoke()
 
-            Column(modifier = Modifier
-                .weight(1f)
-                .padding(start = if (leading != null) 16.dp else 0.dp)
+            Column(
+                modifier = Modifier.weight(1f)
             ) {
                 Text(text = title, style = MaterialTheme.typography.titleMedium)
                 subtitle?.let {

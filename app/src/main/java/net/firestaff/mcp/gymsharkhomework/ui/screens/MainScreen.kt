@@ -1,17 +1,26 @@
 package net.firestaff.mcp.gymsharkhomework.ui.screens
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
-import net.firestaff.mcp.gymsharkhomework.ui.lists.CategoryList
 import net.firestaff.mcp.gymsharkhomework.ui.lists.ProductList
+import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
 @Composable
 fun MainScreen(
     navController: NavController,
-    products: List<Product>
+    productViewModel: ProductViewModel
 ) {
+
+    if(productViewModel.products.value == null) {
+        productViewModel.fetchProducts(navController.context)
+    }
+
+    val products = productViewModel.products.observeAsState(initial = mapOf()).value
+
     TopAppBarScaffold(
         title = "Snack List",
         navController = navController,
@@ -24,7 +33,7 @@ fun MainScreen(
 @Composable
 fun MainScreenContent(
     navController: NavController,
-    products: List<Product>
+    products: Map<String, Product>
 ) {
     ProductList(
         products,

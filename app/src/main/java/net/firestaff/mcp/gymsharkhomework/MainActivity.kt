@@ -9,17 +9,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import net.firestaff.mcp.gymsharkhomework.ui.ProductNavigation
 import net.firestaff.mcp.gymsharkhomework.ui.theme.GymsharkHomeworkTheme
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val viewModel: ProductViewModel by viewModels()
-        viewModel.fetchCategories(this)
+        viewModel.fetchProducts(this)
 
         setContent {
             GymsharkHomeworkTheme {

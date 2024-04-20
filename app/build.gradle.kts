@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.glide)
     implementation(libs.coil.compose)
+    implementation("io.coil-kt:coil-compose:2.6.0")
     implementation(libs.compose.runtime)
     implementation("androidx.compose.runtime:runtime-livedata")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
@@ -70,6 +71,9 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation("com.google.dagger:hilt-android")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -16,21 +16,23 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Orange80,
-    secondary = OrangeGrey80,
-    tertiary = Teal80
+    primary = black,
+    secondary = grey,
+    tertiary = white
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Orange40,
-    secondary = OrangeGrey40,
-    tertiary = Teal40
+    primary = darkGrey,
+    onPrimary = black,
+    secondary = grey,
+    onSecondary = black,
+    tertiary = white,
+    onTertiary = black
 )
 
 @Composable
 fun GymsharkHomeworkTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
