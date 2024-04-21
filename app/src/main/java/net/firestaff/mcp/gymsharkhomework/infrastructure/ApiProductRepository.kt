@@ -38,12 +38,12 @@ class ApiProductRepository @Inject constructor() : ProductRepository {
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 connection?.inputStream?.bufferedReader()?.use(BufferedReader::readText)
             } else {
-                debug("HTTP error response: $responseCode")
+                debug(message = "HTTP error response: $responseCode")
                 null
             }
         } catch (e: Exception) {
-            debug("Error fetching data ${e.message}")
-            debug("Trace: ${e.stackTraceToString()}")
+            debug(message = "Error fetching data ${e.message}")
+            debug(message = "Trace: ${e.stackTraceToString()}")
             null
         } finally {
             connection?.disconnect()

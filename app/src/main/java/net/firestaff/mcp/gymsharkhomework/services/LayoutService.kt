@@ -1,7 +1,6 @@
 package net.firestaff.mcp.gymsharkhomework.services
 
 import android.content.res.Configuration
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 fun calculateGridColumns(configuration: Configuration): Int {

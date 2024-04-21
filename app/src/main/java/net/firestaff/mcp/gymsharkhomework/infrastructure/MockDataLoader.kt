@@ -30,8 +30,8 @@ class MockDataLoader {
                 String(buffer, Charsets.UTF_8)
             }
         } catch (e: IOException) {
-            debug("Error fetching data ${e.message}")
-            debug("Trace: ${e.stackTraceToString()}")
+            debug(message = "Error fetching data ${e.message}")
+            debug(message = "Trace: ${e.stackTraceToString()}")
             null
         }
     }
