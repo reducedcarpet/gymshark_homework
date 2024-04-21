@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -20,8 +19,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.CurrencyService
-import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer16
-import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer8
+import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer16
+import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8
 
 @Composable
 fun ProductListTile(
@@ -55,9 +54,9 @@ fun ProductListTile(
                 }
             }
         }
-        spacer8()
+        Spacer8()
         Text(text = product.title, style = MaterialTheme.typography.bodyMedium)
-        spacer8()
+        Spacer8()
         Text(
             text = product.colour,
             style = MaterialTheme.typography.bodySmall.copy(
@@ -69,6 +68,6 @@ fun ProductListTile(
             text = CurrencyService.formatCurrency(context, product.price),
             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
         )
-        spacer16()
+        Spacer16()
     }
 }

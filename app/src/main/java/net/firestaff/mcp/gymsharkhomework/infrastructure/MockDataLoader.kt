@@ -6,7 +6,6 @@ import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
 import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Product
-import java.io.FileReader
 import java.io.IOException
 
 class MockDataLoader {

@@ -25,7 +25,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import net.firestaff.mcp.gymsharkhomework.models.Product
@@ -35,7 +34,7 @@ import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.SimpleHtmlText
 import net.firestaff.mcp.gymsharkhomework.ui.ThumbnailRow
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
-import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer8
+import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
 @Composable
@@ -123,18 +122,16 @@ fun ProductDetailContent(
         }
 
         Text(text = product.title)
-        spacer8()
+        Spacer8()
         Text(text = product.colour)
-        spacer8()
+        Spacer8()
 
         if (product.description.isNotEmpty()) {
             SimpleHtmlText("Description: ${product.description}")
-            spacer8()
+            Spacer8()
         }
 
         Text(text = "Price: ${product.price}")
-        spacer8()
-
+        Spacer8()
     }
-
 }

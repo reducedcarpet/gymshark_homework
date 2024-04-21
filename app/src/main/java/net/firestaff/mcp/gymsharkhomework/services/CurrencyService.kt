@@ -2,7 +2,6 @@ package net.firestaff.mcp.gymsharkhomework.services
 
 import android.content.Context
 import java.text.NumberFormat
-import java.util.Locale
 
 class CurrencyService {
     companion object {

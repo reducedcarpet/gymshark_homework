@@ -9,5 +9,5 @@ import dagger.hilt.android.components.ViewModelComponent
 @InstallIn(ViewModelComponent::class)  // Scoped to ViewModel lifecycle
 object RepositoryModule {
     @Provides
-    fun provideProductRepository(): ProductRepository = ApiProductRepository() //MockProductRepository() //ApiProductRepository()
+    fun provideProductRepository(): ProductRepository = MockProductRepository() //MockProductRepository() //ApiProductRepository()
 }

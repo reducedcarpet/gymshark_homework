@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.compose.runtime)
 
     implementation("androidx.compose.runtime:runtime-livedata")
-    implementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.04.01"))
     implementation(libs.androidx.activity.compose)
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")

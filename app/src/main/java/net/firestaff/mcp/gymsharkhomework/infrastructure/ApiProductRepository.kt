@@ -6,7 +6,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.firestaff.mcp.gymsharkhomework.data.API_BASE_URL
 import net.firestaff.mcp.gymsharkhomework.infrastructure.MockDataLoader.Companion.parseProductList
-import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil
 import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import java.io.BufferedReader
@@ -24,7 +23,7 @@ class ApiProductRepository @Inject constructor() : ProductRepository {
         return parseProductList(hitsJson)
     }
 
-    suspend fun fetchJsonData(): String? = withContext(Dispatchers.IO) {
+    private suspend fun fetchJsonData(): String? = withContext(Dispatchers.IO) {
         var connection: HttpsURLConnection? = null
         try {
             connection = (URL(API_BASE_URL).openConnection() as? HttpsURLConnection)?.apply {

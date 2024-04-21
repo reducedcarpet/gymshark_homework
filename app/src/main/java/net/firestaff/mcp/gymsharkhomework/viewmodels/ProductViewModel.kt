@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import net.firestaff.mcp.gymsharkhomework.infrastructure.MockDataLoader
 import net.firestaff.mcp.gymsharkhomework.infrastructure.ProductRepository
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import javax.inject.Inject
