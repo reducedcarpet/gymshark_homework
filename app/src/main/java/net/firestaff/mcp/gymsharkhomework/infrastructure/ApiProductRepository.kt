@@ -6,6 +6,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.firestaff.mcp.gymsharkhomework.data.API_BASE_URL
 import net.firestaff.mcp.gymsharkhomework.infrastructure.MockDataLoader.Companion.parseProductList
+import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil
+import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import java.io.BufferedReader
 import java.net.URL
@@ -36,38 +38,15 @@ class ApiProductRepository @Inject constructor() : ProductRepository {
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 connection?.inputStream?.bufferedReader()?.use(BufferedReader::readText)
             } else {
-                println("HTTP error response: $responseCode")
+                debug("HTTP error response: $responseCode")
                 null
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            debug("Error fetching data ${e.message}")
+            debug("Trace: ${e.stackTraceToString()}")
             null
         } finally {
             connection?.disconnect()
         }
     }
-
-    //fun fetchCategoriesFromApi() {
-    //    RetrofitClient.retrofitInstance.fetchProducts()
-    //        .enqueue(
-    //            object : Callback<List<Product>> {
-    //                override fun onResponse(
-    //                    call: Call<List<Product>>,
-    //                    response: Response<List<Product>>
-    //                ) {
-    //                    if (response.isSuccessful) {
-    //                        products.postValue(response.body())
-    //                    } else {
-    //                        // Handle error
-    //                        println("Error: ${response.errorBody()}")
-    //                    }
-    //                }
-
-    //                override fun onFailure(call: Call<List<Product>>, t: Throwable) {
-    //                    // Handle failure
-    //                    println("Failure: ${t.message}")
-    //                }
-    //            }
-    //        )
-    //}
 }

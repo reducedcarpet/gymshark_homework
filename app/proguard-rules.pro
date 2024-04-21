@@ -25,3 +25,10 @@
 -keepclasseswithmembers class * {
     @androidx.compose.runtime.Composable *;
 }
+
+# Remove all log statements in the release build
+-assumenosideeffects class android.util.Log {
+    public static *** v(...);
+    public static *** d(...);
+    public static *** i(...);
+}

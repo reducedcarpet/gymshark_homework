@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
+import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import java.io.FileReader
 import java.io.IOException
@@ -28,8 +29,9 @@ class MockDataLoader {
                 inputStream.read(buffer)
                 String(buffer, Charsets.UTF_8)
             }
-        } catch (ex: IOException) {
-            ex.printStackTrace()
+        } catch (e: IOException) {
+            debug("Error fetching data ${e.message}")
+            debug("Trace: ${e.stackTraceToString()}")
             null
         }
     }
