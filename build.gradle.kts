@@ -4,4 +4,5 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
 
     id("com.google.dagger.hilt.android") version "2.48" apply false
+    id("app.cash.paparazzi") version "1.3.2" apply false
 }

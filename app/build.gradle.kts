@@ -4,6 +4,7 @@ plugins {
 
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("app.cash.paparazzi")
 }
 
 android {
@@ -93,7 +94,7 @@ dependencies {
 
     implementation(libs.coil.compose.v260)
 
-    implementation (libs.timber)
+    implementation(libs.timber)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -101,17 +102,35 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.material3.android)
-    
+
 
     testImplementation(libs.junit)
+    testImplementation(libs.app.paparazzi)
 
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.app.paparazzi)
 
 
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+}
+
+
+// TODO Remove when https://github.com/google/guava/issues/6567 is fixed.
+// See also: https://github.com/google/guava/issues/6801.
+dependencies.constraints {
+    testImplementation("com.google.guava:guava") {
+        attributes {
+            attribute(
+                TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE,
+                objects.named(TargetJvmEnvironment::class.java, TargetJvmEnvironment.STANDARD_JVM)
+            )
+        }
+        because("Paparazzi's layoutlib and sdk-common depend on Guava's -jre published variant." +
+                "See https://github.com/cashapp/paparazzi/issues/906.")
+    }
 }
 
 kapt {

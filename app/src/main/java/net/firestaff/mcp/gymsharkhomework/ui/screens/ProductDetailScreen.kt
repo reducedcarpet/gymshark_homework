@@ -67,7 +67,7 @@ fun ProductDetailScreen(
     } else {
         product?.let {
             TopAppBarScaffold(
-                title = it.type,
+                title = it.type.uppercase(),
                 navController = navController,
                 content = {
                     ProductDetailContent(it)
@@ -123,7 +123,7 @@ fun ProductDetailContent(
         }
 
         ThumbnailRow(product.media, mainImage) { image ->
-            val index = product.media.indexOf(image)
+            val index = image.position - 1 // product.media.indexOf(image)
             if (index != -1) {
                 coroutineScope.launch {
                     pagerState.animateScrollToPage(index)

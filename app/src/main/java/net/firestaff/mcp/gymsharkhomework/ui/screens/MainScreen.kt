@@ -23,7 +23,7 @@ fun MainScreen(
     val products = productViewModel.products.observeAsState(initial = mapOf()).value
 
     TopAppBarScaffold(
-        title = stringResource(id = R.string.products),
+        title = stringResource(id = R.string.search_results),
         navController = navController,
         content = {
             MainScreenContent(navController, products)
