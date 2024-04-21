@@ -3,6 +3,7 @@ package net.firestaff.mcp.gymsharkhomework.ui.screens
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,7 +13,9 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Divider
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,10 +27,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import net.firestaff.mcp.gymsharkhomework.models.Product
+import net.firestaff.mcp.gymsharkhomework.services.CurrencyService
 import net.firestaff.mcp.gymsharkhomework.services.calculateMediaHeight
 import net.firestaff.mcp.gymsharkhomework.ui.HorizontalPagerIndicator
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
@@ -53,9 +59,11 @@ fun ProductDetailScreen(
     }
 
     if (isLoading || product == null) {
-        CircularProgressIndicator(modifier = Modifier
-            .fillMaxSize()
-            .wrapContentSize())
+        CircularProgressIndicator(
+            modifier = Modifier
+                .fillMaxSize()
+                .wrapContentSize()
+        )
     } else {
         product?.let {
             TopAppBarScaffold(
@@ -87,6 +95,8 @@ fun ProductDetailContent(
     LaunchedEffect(pagerState.currentPage) {
         mainImage = product.media[pagerState.currentPage]
     }
+
+    val context = LocalContext.current
 
     Column(modifier = Modifier.verticalScroll(scrollState)) {
         Box(modifier = Modifier) {
@@ -121,13 +131,29 @@ fun ProductDetailContent(
             }
         }
 
-        Text(text = product.title)
-        Spacer8()
-        Text(text = product.colour)
-        Spacer8()
+        Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+            Spacer8()
+            Text(text = product.title, style = MaterialTheme.typography.bodyMedium)
+            Spacer8()
+            Text(
+                text = product.colour,
+                style = MaterialTheme.typography.bodySmall.copy(
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.6f)
+                )
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = CurrencyService.formatCurrency(context, product.price),
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
+            )
+        }
 
         if (product.description.isNotEmpty()) {
-            SimpleHtmlText("Description: ${product.description}")
+            Divider(thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp))
+            SimpleHtmlText(
+                product.description,
+                modifier = Modifier.padding(horizontal = 24.dp)
+            )
             Spacer8()
         }
 
