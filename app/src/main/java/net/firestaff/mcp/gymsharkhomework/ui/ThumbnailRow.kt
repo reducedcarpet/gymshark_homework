@@ -12,17 +12,18 @@ import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.models.Media
 
 @Composable
-fun ThumbnailRow(images: List<Media>, onImageSelected: (Media) -> Unit) {
-    var selectedMedia: Media? by remember { mutableStateOf<Media?>(null) }
+fun ThumbnailRow(images: List<Media>, selectedMedia: Media, onImageSelected: (Media) -> Unit) {
 
-    LazyRow(horizontalArrangement = Arrangement.Start, contentPadding = PaddingValues(4.dp)) {
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(8.dp)
+    ) {
         items(images.size) { index ->
             val media = images[index]
             ImageThumbnail(
                 media,
                 isSelected = media.id == selectedMedia?.id,
-                onImageSelected = {
-                    selectedMedia = it
+                onSelectedImage = {
                     onImageSelected(it)
                 }
             )

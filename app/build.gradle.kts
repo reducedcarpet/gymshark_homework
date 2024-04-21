@@ -63,9 +63,8 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.glide)
     implementation(libs.coil.compose)
-    //implementation(libs.bundles.accompanist)
-    implementation("io.coil-kt:coil-compose:2.6.0")
     implementation(libs.compose.runtime)
+
     implementation("androidx.compose.runtime:runtime-livedata")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.activity:activity-compose:1.8.2")
@@ -73,10 +72,16 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-    implementation("com.google.dagger:hilt-android")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
+
+    implementation("com.google.dagger:hilt-android")
+
     implementation("com.google.accompanist:accompanist-pager:0.34.0")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.34.0")
+
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    implementation("io.coil-kt:coil-compose:2.6.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -84,9 +89,14 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.material3.android)
+    
+
     testImplementation(libs.junit)
+
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")

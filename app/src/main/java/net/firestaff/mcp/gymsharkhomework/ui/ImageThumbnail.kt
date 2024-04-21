@@ -22,12 +22,12 @@ import net.firestaff.mcp.gymsharkhomework.models.Media
 fun ImageThumbnail(
     media: Media,
     isSelected: Boolean,
-    onImageSelected: (Media) -> Unit
+    onSelectedImage: (Media) -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .clickable { onImageSelected(media) }
+            .clickable { onSelectedImage(media) }
             .padding(2.dp)
     ) {
         NetworkImage(

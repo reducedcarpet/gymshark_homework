@@ -1,22 +1,17 @@
 package net.firestaff.mcp.gymsharkhomework.ui.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,28 +19,21 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
-import coil.request.ImageRequest
-import kotlinx.coroutines.delay
-import net.firestaff.mcp.gymsharkhomework.data.defaultAspectRatio
-import net.firestaff.mcp.gymsharkhomework.models.Media
+import kotlinx.coroutines.launch
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.calculateMediaHeight
-import net.firestaff.mcp.gymsharkhomework.services.transformImageUrl
+import net.firestaff.mcp.gymsharkhomework.ui.HorizontalPagerIndicator
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.SimpleHtmlText
 import net.firestaff.mcp.gymsharkhomework.ui.ThumbnailRow
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
-import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer2
 import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer4
 import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer8
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
@@ -65,7 +53,9 @@ fun ProductDetail(
     }
 
     if (isLoading || product == null) {
-        CircularProgressIndicator(modifier = Modifier.fillMaxSize().wrapContentSize())
+        CircularProgressIndicator(modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize())
     } else {
         product?.let {
             TopAppBarScaffold(
@@ -87,6 +77,8 @@ fun ProductDetailContent(
     var mainImage by remember { mutableStateOf(product.featuredMedia) }
     val scrollState = rememberScrollState()
     val pagerState = rememberPagerState(pageCount = { product.media.size })
+    val coroutineScope = rememberCoroutineScope()  // Create a coroutine scope
+
 
     val configuration = LocalConfiguration.current
     val screenWidthDp = configuration.screenWidthDp.dp
@@ -97,23 +89,36 @@ fun ProductDetailContent(
     }
 
     Column(modifier = Modifier.verticalScroll(scrollState)) {
-        HorizontalPager(
-            state = pagerState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(imageHeight.dp)
-        ) { page ->
-            val media = product.media[page]
-            NetworkImage(
-                media,
+        Box(modifier = Modifier) {
+            HorizontalPager(
+                state = pagerState,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(imageHeight.dp)
+            ) { page ->
+                val media = product.media[page]
+                NetworkImage(
+                    media,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(imageHeight.dp)
+                )
+            }
+            HorizontalPagerIndicator(
+                pagerState = pagerState,
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(start = 8.dp, end = 8.dp, bottom = 8.dp),
             )
         }
-        spacer4()
-        ThumbnailRow(product.media) { image ->
-            mainImage = image
+
+        ThumbnailRow(product.media, mainImage) { image ->
+            val index = product.media.indexOf(image)
+            if (index != -1) {
+                coroutineScope.launch {
+                    pagerState.animateScrollToPage(index)
+                }
+            }
         }
 
         Text(text = product.title)
