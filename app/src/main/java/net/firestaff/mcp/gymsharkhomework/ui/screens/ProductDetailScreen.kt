@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import net.firestaff.mcp.gymsharkhomework.models.Product
@@ -34,16 +35,16 @@ import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.SimpleHtmlText
 import net.firestaff.mcp.gymsharkhomework.ui.ThumbnailRow
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
-import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer4
 import net.firestaff.mcp.gymsharkhomework.ui.utils.spacer8
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
 @Composable
-fun ProductDetail(
+fun ProductDetailScreen(
     navController: NavController,
     productId: String,
-    productViewModel: ProductViewModel
+    productViewModel: ProductViewModel,
 ) {
+
     var isLoading by remember { mutableStateOf(true) }
     var product by remember { mutableStateOf<Product?>(null) }
 

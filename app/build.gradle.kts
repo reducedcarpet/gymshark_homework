@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -67,21 +70,27 @@ dependencies {
 
     implementation("androidx.compose.runtime:runtime-livedata")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation(libs.androidx.activity.compose)
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
 
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation(libs.retrofit2.kotlin.coroutines.adapter)
+
     implementation("com.google.dagger:hilt-android")
+    kapt(libs.dagger.hilt.compiler)
+    kapt(libs.hilt.ext.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
-    implementation("com.google.accompanist:accompanist-pager:0.34.0")
-    implementation("com.google.accompanist:accompanist-pager-indicators:0.34.0")
+    implementation(libs.accompanist.pager.layouts)
+    implementation(libs.accompanist.pager.indicators)
 
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.androidx.core.splashscreen)
 
-    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation(libs.coil.compose.v260)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -100,4 +109,8 @@ dependencies {
 
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+}
+
+kapt {
+    correctErrorTypes = true
 }

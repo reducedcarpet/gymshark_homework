@@ -34,11 +34,13 @@ class MockDataLoader {
         }
     }
 
-    private fun parseProductList(jsonString: String): Map<String, Product> {
-        val gson = Gson()
-        val productListType = object : TypeToken<List<Product>>() {}.type
-        val products = gson.fromJson<List<Product>>(jsonString, productListType)
+    companion object {
+        fun parseProductList(jsonString: String): Map<String, Product> {
+            val gson = Gson()
+            val productListType = object : TypeToken<List<Product>>() {}.type
+            val products = gson.fromJson<List<Product>>(jsonString, productListType)
 
-        return products.associateBy { it.id }
+            return products.associateBy { it.id }
+        }
     }
 }
