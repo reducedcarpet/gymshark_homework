@@ -1,11 +1,13 @@
 package net.firestaff.mcp.gymsharkhomework.ui
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -45,12 +47,24 @@ fun ProductListTile(
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column(
-                    modifier = Modifier.weight(1f).height(260.dp)
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(260.dp)
                 ) {
-                    NetworkImage(product.featuredMedia)
+                    Box {
+                        NetworkImage(product.featuredMedia)
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(4.dp),
+                        ) {
+                            Spacer(modifier = Modifier.weight(1f))
+                            HeartIconButton(onClick = { /* Perform an action here */ })
+                        }
+                    }
                 }
             }
         }
