@@ -50,7 +50,7 @@ fun ProductListTile(
                 Column(
                     modifier = Modifier.weight(1f).height(260.dp)
                 ) {
-                    // NetworkImage(product.featuredMedia.src)
+                    NetworkImage(product.featuredMedia)
                 }
             }
         }

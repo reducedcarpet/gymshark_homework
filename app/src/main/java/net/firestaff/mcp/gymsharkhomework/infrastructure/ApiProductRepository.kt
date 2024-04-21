@@ -5,7 +5,7 @@ import com.google.gson.JsonParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.firestaff.mcp.gymsharkhomework.data.API_BASE_URL
-import net.firestaff.mcp.gymsharkhomework.infrastructure.MockDataLoader.Companion.parseProductList
+import net.firestaff.mcp.gymsharkhomework.infrastructure.DataLoader.Companion.parseProductList
 import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import java.io.BufferedReader
