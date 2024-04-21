@@ -22,7 +22,7 @@ fun ThumbnailRow(images: List<Media>, selectedMedia: Media, onImageSelected: (Me
             val media = images[index]
             ImageThumbnail(
                 media,
-                isSelected = media.id == selectedMedia?.id,
+                isSelected = media.id == selectedMedia.id,
                 onSelectedImage = {
                     onImageSelected(it)
                 }
