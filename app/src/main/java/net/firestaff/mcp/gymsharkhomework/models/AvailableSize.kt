@@ -5,7 +5,7 @@ data class AvailableSize (
     val inStock: Boolean,
     val inventoryQuantity: Int,
     val price: Int,
-    val size: String,
+    val size: Size,
     val sku: String
 ) {
     fun isAvailable(): Boolean {

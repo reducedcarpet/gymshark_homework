@@ -27,7 +27,8 @@ class DataLoader {
         }
 
         fun parseProductList(jsonString: String): Map<String, Product> {
-            val gson = Gson()
+            val gson = GsonService.gson
+
             val productListType = object : TypeToken<List<Product>>() {}.type
             val products = gson.fromJson<List<Product>>(jsonString, productListType)
 

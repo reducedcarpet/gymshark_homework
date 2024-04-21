@@ -4,7 +4,7 @@ data class Product(
     val id: String,
     val sku: String,
     val inStock: Boolean,
-    val sizeInStock: List<String>,
+    val sizeInStock: List<Size>,
     val availableSizes: List<AvailableSize>,
     val title: String,
     val handle: String,

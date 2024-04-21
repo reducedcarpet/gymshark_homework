@@ -28,18 +28,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
+import net.firestaff.mcp.gymsharkhomework.R
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.CurrencyService
 import net.firestaff.mcp.gymsharkhomework.services.calculateMediaHeight
 import net.firestaff.mcp.gymsharkhomework.ui.HorizontalPagerIndicator
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.SimpleHtmlText
+import net.firestaff.mcp.gymsharkhomework.ui.SizeDropdown
 import net.firestaff.mcp.gymsharkhomework.ui.ThumbnailRow
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
+import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer16
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 
@@ -146,6 +150,13 @@ fun ProductDetailContent(
                 text = CurrencyService.formatCurrency(context, product.price),
                 style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
             )
+            Spacer16()
+            Text(
+                text = stringResource(id = R.string.select_size).uppercase(),
+                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.W900),
+            )
+            Spacer8()
+            SizeDropdown(product.sizeInStock)
         }
 
         if (product.description.isNotEmpty()) {
@@ -157,7 +168,6 @@ fun ProductDetailContent(
             Spacer8()
         }
 
-        Text(text = "Price: ${product.price}")
         Spacer8()
     }
 }

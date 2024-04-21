@@ -3,6 +3,7 @@ package net.firestaff.mcp.gymsharkhomework.models
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
+import net.firestaff.mcp.gymsharkhomework.infrastructure.GsonService
 import org.junit.Assert
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -85,7 +86,7 @@ val trueEmptyJson = """{
  */
 class ProductDeserializationTest {
 
-    private val gson = Gson()
+    private val gson = GsonService.gson
 
     @Test
     fun deserialization_is_correct() {
