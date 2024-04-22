@@ -23,7 +23,6 @@ import net.firestaff.mcp.gymsharkhomework.ui.wishlist.HeartIconButton
 fun ProductImage(
     product: Product,
     isWishlisted: Boolean = false,
-    onClick: () -> Unit,
     onWishlist: (String) -> Unit,
 ) {
     Card(

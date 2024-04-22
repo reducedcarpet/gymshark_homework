@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import net.firestaff.mcp.gymsharkhomework.models.Product
-import net.firestaff.mcp.gymsharkhomework.ui.product.ProductImage
-import net.firestaff.mcp.gymsharkhomework.ui.product.ProductInfoColumn
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer16
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8
 
@@ -22,7 +20,6 @@ fun ProductListTile(
     ) {
         ProductImage(
             product = product,
-            onClick = onClick,
             isWishlisted = isWishlisted,
             onWishlist = onWishlist,
         )

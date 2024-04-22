@@ -42,7 +42,7 @@ fun ProductFeaturedImageColumn(product: Product) {
         mainImage = product.media[pagerState.currentPage]
     }
 
-    Column() {
+    Column {
         Box(modifier = Modifier) {
             HorizontalPager(
                 state = pagerState,

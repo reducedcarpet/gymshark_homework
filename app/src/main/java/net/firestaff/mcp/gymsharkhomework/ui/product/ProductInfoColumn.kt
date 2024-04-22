@@ -18,7 +18,7 @@ import net.firestaff.mcp.gymsharkhomework.utils.kebabToTitleCase
 fun ProductInfoColumn(product: Product) {
     val context = LocalContext.current
 
-    Column() {
+    Column {
         Text(text = product.title, style = TextStyles.bodyMedium)
         Spacer8()
         if (!product.labels.isNullOrEmpty()) {

@@ -16,7 +16,7 @@ enum class Size(val label: String, val resId: Int) {
         fun from(value: String): Size? = values().find { it.name.equals(value, ignoreCase = true) }
     }
 
-    fun toString(context: Context): String? {
+    fun toString(context: Context): String {
         return context.getString(resId)
     }
 }
