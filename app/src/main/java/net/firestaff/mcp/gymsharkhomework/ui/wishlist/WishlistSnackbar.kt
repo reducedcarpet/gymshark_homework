@@ -9,6 +9,6 @@ import androidx.compose.runtime.Composable
 fun WishlistSnackbar(snackbarData: SnackbarData) {
     Snackbar(
         snackbarData = snackbarData,
-        actionColor = MaterialTheme.colorScheme.tertiary
+        actionColor = MaterialTheme.colorScheme.tertiary,
     )
 }
