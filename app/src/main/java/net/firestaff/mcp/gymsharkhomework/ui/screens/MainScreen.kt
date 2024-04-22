@@ -9,11 +9,13 @@ import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
 import net.firestaff.mcp.gymsharkhomework.ui.lists.ProductList
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
+import net.firestaff.mcp.gymsharkhomework.viewmodels.WishlistViewModel
 
 @Composable
 fun MainScreen(
     navController: NavController,
     productViewModel: ProductViewModel,
+    wishlistViewModel: WishlistViewModel,
 ) {
 
     if(productViewModel.products.value == null) {
@@ -26,7 +28,7 @@ fun MainScreen(
         title = stringResource(id = R.string.search_results),
         navController = navController,
         content = {
-            MainScreenContent(navController, products)
+            MainScreenContent(navController,wishlistViewModel, products, )
         }
     )
 }
@@ -34,10 +36,12 @@ fun MainScreen(
 @Composable
 fun MainScreenContent(
     navController: NavController,
-    products: Map<String, Product>
+    wishlistViewModel: WishlistViewModel,
+    products: Map<String, Product>,
 ) {
     ProductList(
         products,
-        navController
+        navController,
+        wishlistViewModel,
     )
 }

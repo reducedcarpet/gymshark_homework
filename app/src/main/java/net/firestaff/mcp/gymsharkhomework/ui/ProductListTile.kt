@@ -27,7 +27,9 @@ import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8
 @Composable
 fun ProductListTile(
     product: Product,
-    onClick: () -> Unit
+    isWishlisted: Boolean = false,
+    onClick: () -> Unit,
+    onWishlist: (String) -> Unit,
 ) {
     val context = LocalContext.current
 
@@ -62,7 +64,10 @@ fun ProductListTile(
                                 .padding(4.dp),
                         ) {
                             Spacer(modifier = Modifier.weight(1f))
-                            HeartIconButton(onClick = { /* Perform an action here */ })
+                            HeartIconButton(
+                                onClick = { onWishlist(product.id) },
+                                isFilled = isWishlisted,
+                            )
                         }
                     }
                 }
