@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
+import net.firestaff.mcp.gymsharkhomework.ui.wishlist.HeartIconButton
 
 @Composable
 fun ProductImage(

@@ -1,4 +1,4 @@
-package net.firestaff.mcp.gymsharkhomework.ui.product
+package net.firestaff.mcp.gymsharkhomework.ui.wishlist
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -36,5 +36,5 @@ fun HeartIconButton(onClick: () -> Unit, isFilled: Boolean = false) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewHeartIconButton() {
-    HeartIconButton(onClick = { /* Perform an action here */ })
+    HeartIconButton(onClick = {  })
 }

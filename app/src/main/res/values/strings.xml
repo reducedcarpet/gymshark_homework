@@ -12,6 +12,7 @@
     <string name="added_to_wishlist">Added to Wishlist</string>
     <string name="removed_from_wishlist">Removed from Wishlist</string>
     <string name="dismiss">DISMISS</string>
+    <string name="undo">UNDO</string>
 
     <string name="size_xxs">XXS</string>
     <string name="size_xs">XS</string>
