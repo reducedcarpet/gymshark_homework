@@ -57,7 +57,9 @@ fun ProductListTile(
                         .height(260.dp)
                 ) {
                     Box {
-                        NetworkImage(product.featuredMedia)
+                        if(product.featuredMedia != null) {
+                            NetworkImage(product.featuredMedia)
+                        }
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()

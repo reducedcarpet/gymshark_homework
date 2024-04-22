@@ -1,3 +1,16 @@
+import java.util.Properties
+
+fun loadProperties(filename: String): Properties {
+    val properties = Properties()
+    file(filename).inputStream().use {
+        properties.load(it)
+    }
+    return properties
+}
+
+// val keyProperties = loadProperties("../key.properties")
+
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -21,13 +34,23 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        // create("release") {
+        //     keyAlias = keyProperties["keyAlias"].toString()
+        //     keyPassword = keyProperties["keyPassword"].toString()
+        //     storeFile = file(keyProperties["storeFile"].toString())
+        //     storePassword = keyProperties["storePassword"].toString()
+        // }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // signingConfig  = signingConfigs.getByName("release")
         }
     }
 
@@ -64,7 +87,6 @@ android {
 dependencies {
 
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.glide)
     implementation(libs.coil.compose)
@@ -79,9 +101,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
     implementation("androidx.compose.material:material-icons-extended")
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation(libs.retrofit2.kotlin.coroutines.adapter)
 
     implementation("com.google.dagger:hilt-android")
     kapt(libs.dagger.hilt.compiler)

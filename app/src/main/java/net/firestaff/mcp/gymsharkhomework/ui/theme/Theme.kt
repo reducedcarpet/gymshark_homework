@@ -60,7 +60,7 @@ fun GymsharkHomeworkTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = latoTypography,
         content = content
     )
 }
