@@ -1,6 +1,7 @@
 package net.firestaff.mcp.gymsharkhomework.ui
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
@@ -22,12 +23,12 @@ fun HeartIconButton(onClick: () -> Unit, isFilled: Boolean = false) {
             contentColor = black,
             containerColor = white,
         ),
+        modifier = Modifier.size(32.dp),
     ) {
-
         Icon(
             imageVector = if (isFilled) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-            contentDescription = "Favorite",
-            modifier = Modifier.padding(8.dp)
+            contentDescription = "Add to Wishlist",
+            modifier = Modifier.padding(8.dp).size(20.dp),
         )
     }
 }

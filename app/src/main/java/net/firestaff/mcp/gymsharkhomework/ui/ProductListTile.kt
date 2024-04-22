@@ -63,7 +63,7 @@ fun ProductListTile(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(4.dp),
+                                .padding(8.dp),
                         ) {
                             Spacer(modifier = Modifier.weight(1f))
                             HeartIconButton(
