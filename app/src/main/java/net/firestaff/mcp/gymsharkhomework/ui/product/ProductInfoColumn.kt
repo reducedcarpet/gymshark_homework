@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.CurrencyService
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8
+import net.firestaff.mcp.gymsharkhomework.utils.kebabToTitleCase
 
 @Composable
 fun ProductInfoColumn(product: Product) {
@@ -21,6 +22,15 @@ fun ProductInfoColumn(product: Product) {
     Column() {
         Text(text = product.title, style = MaterialTheme.typography.bodyMedium)
         Spacer8()
+        if(!product.labels.isNullOrEmpty()) {
+            Text(
+                text = product.labels.joinToString(", ") { it.kebabToTitleCase() },
+                style = MaterialTheme.typography.bodySmall.copy(
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.6f)
+                )
+            )
+            Spacer8()
+        }
         Text(
             text = product.colour,
             style = MaterialTheme.typography.bodySmall.copy(

@@ -61,7 +61,7 @@
       "type": "Doggo",
       "gender": ["f"],
       "fit": null,
-      "labels": ["wire-haired"],
+      "labels": ["wire-haired", "limited-edition"],
       "colour": "Tan",
       "price": 1000,
       "compareAtPrice": null,
