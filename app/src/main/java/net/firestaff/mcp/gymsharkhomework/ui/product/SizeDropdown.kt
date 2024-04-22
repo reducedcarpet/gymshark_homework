@@ -12,7 +12,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.R
 import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Size
+import net.firestaff.mcp.gymsharkhomework.ui.theme.TextStyles
 import net.firestaff.mcp.gymsharkhomework.ui.theme.black
 import net.firestaff.mcp.gymsharkhomework.ui.theme.grey
 import net.firestaff.mcp.gymsharkhomework.ui.theme.white
@@ -58,7 +58,7 @@ fun SizeDropdown(sizes: List<Size>) {
             ) {
                 Text(
                     stringResource(id = R.string.select_size),
-                    style = MaterialTheme.typography.bodySmall,
+                    style = TextStyles.bodyMedium,
                 )
                 Icon(
                     imageVector = Icons.Rounded.ArrowDropDown,

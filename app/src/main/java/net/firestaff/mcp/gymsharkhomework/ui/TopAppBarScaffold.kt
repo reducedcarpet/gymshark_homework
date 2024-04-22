@@ -14,9 +14,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import net.firestaff.mcp.gymsharkhomework.ui.theme.TextStyles
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,10 +37,7 @@ fun TopAppBarScaffold(
                 title = {
                     Text(
                         title,
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp
-                        )
+                        style = TextStyles.appTitleLarge,
                     )
                 },
                 colors = topAppBarColors,
