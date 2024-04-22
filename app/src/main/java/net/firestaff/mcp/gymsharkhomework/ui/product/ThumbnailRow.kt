@@ -1,4 +1,4 @@
-package net.firestaff.mcp.gymsharkhomework.ui
+package net.firestaff.mcp.gymsharkhomework.ui.product
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.models.Media
+import net.firestaff.mcp.gymsharkhomework.ui.product.ImageThumbnail
 
 @Composable
 fun ThumbnailRow(images: List<Media>, selectedMedia: Media, onImageSelected: (Media) -> Unit) {

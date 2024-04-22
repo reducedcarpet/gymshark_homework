@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 import net.firestaff.mcp.gymsharkhomework.R
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.calculateGridColumns
-import net.firestaff.mcp.gymsharkhomework.ui.ProductListTile
+import net.firestaff.mcp.gymsharkhomework.ui.product.ProductListTile
 import net.firestaff.mcp.gymsharkhomework.viewmodels.WishlistViewModel
 
 @Composable

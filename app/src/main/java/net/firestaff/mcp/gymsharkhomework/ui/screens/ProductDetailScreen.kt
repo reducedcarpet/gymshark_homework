@@ -37,11 +37,11 @@ import net.firestaff.mcp.gymsharkhomework.R
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.CurrencyService
 import net.firestaff.mcp.gymsharkhomework.services.calculateMediaHeight
-import net.firestaff.mcp.gymsharkhomework.ui.HorizontalPagerIndicator
+import net.firestaff.mcp.gymsharkhomework.ui.product.HorizontalPagerIndicator
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
-import net.firestaff.mcp.gymsharkhomework.ui.SimpleHtmlText
-import net.firestaff.mcp.gymsharkhomework.ui.SizeDropdown
-import net.firestaff.mcp.gymsharkhomework.ui.ThumbnailRow
+import net.firestaff.mcp.gymsharkhomework.ui.product.SimpleHtmlText
+import net.firestaff.mcp.gymsharkhomework.ui.product.SizeDropdown
+import net.firestaff.mcp.gymsharkhomework.ui.product.ThumbnailRow
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer16
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8

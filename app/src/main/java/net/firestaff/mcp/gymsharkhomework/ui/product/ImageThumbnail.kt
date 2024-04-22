@@ -1,4 +1,4 @@
-package net.firestaff.mcp.gymsharkhomework.ui
+package net.firestaff.mcp.gymsharkhomework.ui.product
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.data.defaultAspectRatio
 import net.firestaff.mcp.gymsharkhomework.data.thumbnailHeight
 import net.firestaff.mcp.gymsharkhomework.models.Media
+import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 
 @Composable
 fun ImageThumbnail(

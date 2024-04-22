@@ -1,4 +1,4 @@
-package net.firestaff.mcp.gymsharkhomework.ui
+package net.firestaff.mcp.gymsharkhomework.ui.product
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.buildAnnotatedString

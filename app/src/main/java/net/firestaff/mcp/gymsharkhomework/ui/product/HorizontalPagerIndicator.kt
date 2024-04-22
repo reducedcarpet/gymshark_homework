@@ -1,4 +1,4 @@
-package net.firestaff.mcp.gymsharkhomework.ui
+package net.firestaff.mcp.gymsharkhomework.ui.product
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi

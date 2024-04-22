@@ -1,4 +1,4 @@
-package net.firestaff.mcp.gymsharkhomework.ui
+package net.firestaff.mcp.gymsharkhomework.ui.product
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.models.Product
+import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 
 @Composable
 fun ProductImage(

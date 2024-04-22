@@ -21,4 +21,3 @@ data class Product(
     val media: List<Media>,
     val objectID: String
 )
-

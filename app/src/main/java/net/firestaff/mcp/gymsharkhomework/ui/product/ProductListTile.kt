@@ -1,10 +1,12 @@
-package net.firestaff.mcp.gymsharkhomework.ui
+package net.firestaff.mcp.gymsharkhomework.ui.product
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import net.firestaff.mcp.gymsharkhomework.models.Product
+import net.firestaff.mcp.gymsharkhomework.ui.product.ProductImage
+import net.firestaff.mcp.gymsharkhomework.ui.product.ProductInfoColumn
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer16
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8
 
