@@ -68,8 +68,6 @@ fun ProductList(
                         onWishlist = { productId ->
                             val isCurrentlyWishlisted = wishlist.contains(productId)
 
-                            println("Current wishlist state: $wishlist")
-
                             if (isCurrentlyWishlisted) {
                                 wishlistViewModel.removeFromWishlist(productId)
 
