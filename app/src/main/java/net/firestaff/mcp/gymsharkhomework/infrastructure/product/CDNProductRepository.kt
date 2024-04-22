@@ -1,10 +1,10 @@
-package net.firestaff.mcp.gymsharkhomework.infrastructure
+package net.firestaff.mcp.gymsharkhomework.infrastructure.product
 
 import android.content.Context
 import com.google.gson.JsonParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import net.firestaff.mcp.gymsharkhomework.data.API_BASE_URL
+import net.firestaff.mcp.gymsharkhomework.data.CDN_URL
 import net.firestaff.mcp.gymsharkhomework.infrastructure.DataLoader.Companion.parseProductList
 import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Product
@@ -13,7 +13,7 @@ import java.net.URL
 import javax.inject.Inject
 import javax.net.ssl.HttpsURLConnection
 
-class ApiProductRepository @Inject constructor() : ProductRepository {
+class CDNProductRepository @Inject constructor() : ProductRepository {
 
     override suspend fun fetchProducts(context: Context): Map<String, Product> {
         val json = fetchJsonData() ?: "{}"
@@ -26,7 +26,7 @@ class ApiProductRepository @Inject constructor() : ProductRepository {
     private suspend fun fetchJsonData(): String? = withContext(Dispatchers.IO) {
         var connection: HttpsURLConnection? = null
         try {
-            connection = (URL(API_BASE_URL).openConnection() as? HttpsURLConnection)?.apply {
+            connection = (URL(CDN_URL).openConnection() as? HttpsURLConnection)?.apply {
                 requestMethod = "GET"
                 connectTimeout = 15000
                 readTimeout = 15000

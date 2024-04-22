@@ -1,7 +1,8 @@
-package net.firestaff.mcp.gymsharkhomework.infrastructure
+package net.firestaff.mcp.gymsharkhomework.infrastructure.product
 
 import android.content.Context
 import com.google.gson.JsonParser
+import net.firestaff.mcp.gymsharkhomework.infrastructure.DataLoader
 import net.firestaff.mcp.gymsharkhomework.models.Product
 
 class MockProductRepository : ProductRepository {

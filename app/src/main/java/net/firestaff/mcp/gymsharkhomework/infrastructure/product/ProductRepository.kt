@@ -1,4 +1,4 @@
-package net.firestaff.mcp.gymsharkhomework.infrastructure
+package net.firestaff.mcp.gymsharkhomework.infrastructure.product
 
 import android.content.Context
 import net.firestaff.mcp.gymsharkhomework.models.Product
