@@ -1,5 +1,6 @@
 package net.firestaff.mcp.gymsharkhomework.ui.product
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.data.gridImageHeight
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
+import net.firestaff.mcp.gymsharkhomework.ui.theme.grey
 import net.firestaff.mcp.gymsharkhomework.ui.wishlist.HeartIconButton
 
 @Composable
@@ -47,7 +49,16 @@ fun ProductImage(
                     .height(gridImageHeight.dp)
             ) {
                 Box {
-                    NetworkImage(product.featuredMedia)
+                    Box {
+                        Box(
+                            modifier = Modifier
+                                .matchParentSize()  // Ensure it matches the size of the parent Box
+                                .background(grey)  // Set the background color to grey
+                        )
+
+                        NetworkImage(product.featuredMedia)
+                    }
+
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()

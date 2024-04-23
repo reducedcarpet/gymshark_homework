@@ -90,7 +90,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.coil.compose)
     implementation(libs.compose.runtime)
-    implementation (libs.gson)
+    implementation(libs.gson)
 
     implementation("androidx.compose.runtime:runtime-livedata")
     implementation(platform("androidx.compose:compose-bom:2024.04.01"))
@@ -127,6 +127,7 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.app.paparazzi)
+    testImplementation(libs.mockito.core)
 
 
     androidTestImplementation(libs.androidx.junit)
@@ -149,8 +150,10 @@ dependencies.constraints {
                 objects.named(TargetJvmEnvironment::class.java, TargetJvmEnvironment.STANDARD_JVM)
             )
         }
-        because("Paparazzi's layoutlib and sdk-common depend on Guava's -jre published variant." +
-                "See https://github.com/cashapp/paparazzi/issues/906.")
+        because(
+            "Paparazzi's layoutlib and sdk-common depend on Guava's -jre published variant." +
+                    "See https://github.com/cashapp/paparazzi/issues/906."
+        )
     }
 }
 

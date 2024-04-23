@@ -1,6 +1,7 @@
 package net.firestaff.mcp.gymsharkhomework.ui.product
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,6 +24,7 @@ import kotlinx.coroutines.launch
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.calculateMediaHeight
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
+import net.firestaff.mcp.gymsharkhomework.ui.theme.grey
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -52,12 +54,21 @@ fun ProductFeaturedImageColumn(product: Product) {
             )
             { page ->
                 val media = product.media[page]
-                NetworkImage(
-                    media,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(media.height.dp)
-                )
+
+                Box {
+                    Box(
+                        modifier = Modifier
+                            .matchParentSize()
+                            .background(grey)
+                    )
+
+                    NetworkImage(
+                        media,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(media.height.dp)
+                    )
+                }
             }
             HorizontalPagerIndicator(
                 pagerState = pagerState,

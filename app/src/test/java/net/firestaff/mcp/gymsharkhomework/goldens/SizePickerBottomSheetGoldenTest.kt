@@ -7,13 +7,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
-import net.firestaff.mcp.gymsharkhomework.ui.product.ProductDetailContent
+import net.firestaff.mcp.gymsharkhomework.ui.product.SizePickerBottomSheet
 import net.firestaff.mcp.gymsharkhomework.utils.TestTheme
 import net.firestaff.mcp.gymsharkhomework.utils.product
 import org.junit.Rule
 import org.junit.Test
 
-class ProductDetailContentGoldenTest {
+class SizePickerBottomSheetGoldenTest {
     @get:Rule
     val paparazzi = Paparazzi(
         deviceConfig = DeviceConfig.PIXEL_5,
@@ -26,7 +26,7 @@ class ProductDetailContentGoldenTest {
             TestTheme {
                 Scaffold(containerColor = Color.White) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
-                        ProductDetailContent(product)
+                        SizePickerBottomSheet(product)
                     }
                 }
             }

@@ -1,5 +1,6 @@
 package net.firestaff.mcp.gymsharkhomework.ui.product
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,6 +36,12 @@ fun SizePickerBottomSheet(product: Product) {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Box(modifier = Modifier.height(sizePickerImageHeight.dp)) {
+                Box(
+                    modifier = Modifier
+                        .matchParentSize()
+                        .background(grey)
+                )
+
                 NetworkImage(
                     product.featuredMedia,
                     modifier = Modifier.clip(shape = RoundedCornerShape(4.dp)),

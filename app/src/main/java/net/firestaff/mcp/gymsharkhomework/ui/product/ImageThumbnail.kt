@@ -1,5 +1,6 @@
 package net.firestaff.mcp.gymsharkhomework.ui.product
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -15,6 +16,7 @@ import net.firestaff.mcp.gymsharkhomework.data.defaultAspectRatio
 import net.firestaff.mcp.gymsharkhomework.data.thumbnailHeight
 import net.firestaff.mcp.gymsharkhomework.models.Media
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
+import net.firestaff.mcp.gymsharkhomework.ui.theme.grey
 
 @Composable
 fun ImageThumbnail(
@@ -28,6 +30,13 @@ fun ImageThumbnail(
             .clickable { onSelectedImage(media) }
             .padding(2.dp)
     ) {
+        Box(
+            modifier = Modifier
+                .height(thumbnailHeight.dp)
+                .width((thumbnailHeight / defaultAspectRatio).dp)
+                .background(grey) // Set the background color to grey
+        )
+
         NetworkImage(
             media,
             modifier = Modifier
