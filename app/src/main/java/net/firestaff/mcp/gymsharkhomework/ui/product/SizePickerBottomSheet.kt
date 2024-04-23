@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,8 +17,6 @@ import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.PullTab
-import net.firestaff.mcp.gymsharkhomework.ui.WheelPicker
-import net.firestaff.mcp.gymsharkhomework.ui.theme.TextStyles
 import net.firestaff.mcp.gymsharkhomework.ui.theme.grey
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer16
 import net.firestaff.mcp.gymsharkhomework.ui.utils.Spacer8
@@ -55,15 +52,6 @@ fun SizePickerBottomSheet(product: Product) {
                 isFilled = false,
                 containerColor = grey.copy(alpha = 0.2f),
             )
-        }
-        Spacer16()
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.weight(1f).align(Alignment.CenterVertically)) {
-                Text("SIZE", style = TextStyles.bodyMediumBold)
-                Spacer16()
-                WheelPicker(items = listOf("XS", "S", "M", "L", "XL", "XXL"), onItemSelected = {})
-            }
-            Column(modifier = Modifier.weight(1f)) {}
         }
         Spacer16()
     }
