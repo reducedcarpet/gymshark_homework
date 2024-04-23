@@ -46,7 +46,6 @@ fun ProductDetailContent(
                 ProductInfoColumn(product = product)
                 Spacer8()
                 SizeDropdown(
-                    product.sizeInStock,
                     onClick = {
                         coroutineScope.launch { modalBottomSheetState.show() }
                     },

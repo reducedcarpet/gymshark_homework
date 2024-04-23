@@ -10,10 +10,15 @@ import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class CDNProductRepository @Inject constructor() : ProductRepository {
     private val client = OkHttpClient()
+        .newBuilder()
+        .connectTimeout(10, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
+        .build()
 
     override suspend fun fetchProducts(context: Context): Map<String, Product> {
         val json = fetchJsonData() ?: "{}"

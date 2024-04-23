@@ -82,6 +82,13 @@ android {
             excludes += ".bin"
         }
     }
+
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -93,7 +100,7 @@ dependencies {
     implementation(libs.gson)
 
     implementation("androidx.compose.runtime:runtime-livedata")
-    implementation(libs.androidx.compose.bom)
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
@@ -104,6 +111,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
 
     implementation("com.google.dagger:hilt-android")
+    implementation(libs.androidx.navigation.testing)
     kapt(libs.dagger.hilt.compiler)
     kapt(libs.hilt.ext.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
@@ -125,20 +133,23 @@ dependencies {
     implementation(libs.androidx.material3.android)
 
 
+    testImplementation(libs.hamcrest.hamcrest)
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.core)
+    testImplementation(platform(libs.androidx.compose.bom))
+    testImplementation(libs.androidx.ui.test.junit4)
+    testImplementation(libs.androidx.espresso.core)
     testImplementation(libs.app.paparazzi)
     testImplementation(libs.mockito.core)
-    testImplementation (libs.androidx.ui.test.junit4)
-    testImplementation (libs.robolectric)
+    testImplementation(libs.robolectric)
 
 
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.app.paparazzi)
 
 
     debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.6")
 }
 
 

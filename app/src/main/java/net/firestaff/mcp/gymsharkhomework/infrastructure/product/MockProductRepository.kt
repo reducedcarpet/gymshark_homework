@@ -14,7 +14,7 @@ class MockProductRepository : ProductRepository {
         val jsonFilePath = "data.json"
         val jsonString = DataLoader.loadJSONFromAsset(context, fileName = jsonFilePath)
 
-        val element = JsonParser().parse(jsonString)
+        val element = JsonParser.parseString(jsonString)
         val hitsJson = element.asJsonObject.get("hits").toString()
 
         return DataLoader.parseProductList(hitsJson)

@@ -20,14 +20,13 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.R
-import net.firestaff.mcp.gymsharkhomework.models.Size
 import net.firestaff.mcp.gymsharkhomework.ui.theme.TextStyles
 import net.firestaff.mcp.gymsharkhomework.ui.theme.black
 import net.firestaff.mcp.gymsharkhomework.ui.theme.grey
 import net.firestaff.mcp.gymsharkhomework.ui.theme.white
 
 @Composable
-fun SizeDropdown(sizes: List<Size>, onClick: () -> Unit) {
+fun SizeDropdown(onClick: () -> Unit) {
     val selectSize = stringResource(id = R.string.select_size)
 
     Box(modifier = Modifier, contentAlignment = Alignment.TopStart) {
