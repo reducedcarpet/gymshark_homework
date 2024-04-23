@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import net.firestaff.mcp.gymsharkhomework.data.gridImageHeight
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.wishlist.HeartIconButton
@@ -43,7 +44,7 @@ fun ProductImage(
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .height(260.dp)
+                    .height(gridImageHeight.dp)
             ) {
                 Box {
                     NetworkImage(product.featuredMedia)

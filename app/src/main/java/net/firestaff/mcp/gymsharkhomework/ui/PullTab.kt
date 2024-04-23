@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import net.firestaff.mcp.gymsharkhomework.data.pullTabWidth
 
 @Composable
 fun PullTab() {
@@ -24,7 +25,7 @@ fun PullTab() {
     ) {
         Box(
             modifier = Modifier
-                .width(36.dp)
+                .width(pullTabWidth.dp)
                 .height(4.dp)
                 .background(color = Color.Gray, shape = RoundedCornerShape(50))
         )

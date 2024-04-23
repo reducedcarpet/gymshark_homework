@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import net.firestaff.mcp.gymsharkhomework.data.sizePickerImageHeight
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.NetworkImage
 import net.firestaff.mcp.gymsharkhomework.ui.PullTab
@@ -33,14 +34,14 @@ fun SizePickerBottomSheet(product: Product) {
                 .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Box(modifier = Modifier.height(100.dp)) {
+            Box(modifier = Modifier.height(sizePickerImageHeight.dp)) {
                 NetworkImage(
                     product.featuredMedia,
                     modifier = Modifier.clip(shape = RoundedCornerShape(4.dp)),
                 )
             }
             Spacer(modifier = Modifier.width(16.dp))
-            Box(modifier = Modifier.weight(1f).height(100.dp)) {
+            Box(modifier = Modifier.weight(1f).height(sizePickerImageHeight.dp)) {
                 Column {
                     Spacer(modifier = Modifier.weight(1f))
                     ProductInfoColumn(product = product)
@@ -50,7 +51,7 @@ fun SizePickerBottomSheet(product: Product) {
             HeartIconButton(
                 onClick = { },
                 isFilled = false,
-                containerColor = grey.copy(alpha = 0.2f),
+                containerColor = grey.copy(alpha = 0.3f),
             )
         }
         Spacer16()
