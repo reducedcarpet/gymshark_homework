@@ -10,25 +10,32 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.ui.theme.black
 import net.firestaff.mcp.gymsharkhomework.ui.theme.white
 
 @Composable
-fun HeartIconButton(onClick: () -> Unit, isFilled: Boolean = false) {
+fun HeartIconButton(
+    onClick: () -> Unit,
+    isFilled: Boolean = false,
+    containerColor: Color = white,
+) {
     IconButton(
         onClick = onClick,
         colors = IconButtonDefaults.iconButtonColors(
             contentColor = black,
-            containerColor = white,
+            containerColor = containerColor,
         ),
         modifier = Modifier.size(32.dp),
     ) {
         Icon(
             imageVector = if (isFilled) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
             contentDescription = "Add to Wishlist",
-            modifier = Modifier.padding(8.dp).size(20.dp),
+            modifier = Modifier
+                .padding(8.dp)
+                .size(20.dp),
         )
     }
 }
@@ -36,5 +43,5 @@ fun HeartIconButton(onClick: () -> Unit, isFilled: Boolean = false) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewHeartIconButton() {
-    HeartIconButton(onClick = {  })
+    HeartIconButton(onClick = { })
 }

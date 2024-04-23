@@ -1,4 +1,4 @@
-package net.firestaff.mcp.gymsharkhomework.ui.lists
+package net.firestaff.mcp.gymsharkhomework.ui.product
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,7 +22,6 @@ import androidx.navigation.NavController
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.WishlistService
 import net.firestaff.mcp.gymsharkhomework.services.calculateGridColumns
-import net.firestaff.mcp.gymsharkhomework.ui.product.ProductListTile
 import net.firestaff.mcp.gymsharkhomework.ui.wishlist.ProductSnackbarHost
 import net.firestaff.mcp.gymsharkhomework.viewmodels.WishlistViewModel
 

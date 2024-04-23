@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import net.firestaff.mcp.gymsharkhomework.R
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.ui.TopAppBarScaffold
-import net.firestaff.mcp.gymsharkhomework.ui.lists.ProductList
+import net.firestaff.mcp.gymsharkhomework.ui.product.ProductList
 import net.firestaff.mcp.gymsharkhomework.viewmodels.ProductViewModel
 import net.firestaff.mcp.gymsharkhomework.viewmodels.WishlistViewModel
 

@@ -16,7 +16,7 @@ data class Product(
     val colour: String,
     val price: Double,
     val compareAtPrice: Double?,
-    val discountPercentage: Double,
+    val discountPercentage: Double?,
     val featuredMedia: Media,
     val media: List<Media>,
     val objectID: String
