@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import net.firestaff.mcp.gymsharkhomework.infrastructure.product.MockProductRepository
+import net.firestaff.mcp.gymsharkhomework.infrastructure.product.CDNProductRepository
 import net.firestaff.mcp.gymsharkhomework.infrastructure.product.ProductRepository
 import net.firestaff.mcp.gymsharkhomework.infrastructure.wishlist.MemoryWishlistRepository
 import net.firestaff.mcp.gymsharkhomework.infrastructure.wishlist.WishlistRepository
@@ -13,7 +13,7 @@ import net.firestaff.mcp.gymsharkhomework.infrastructure.wishlist.WishlistReposi
 @InstallIn(ViewModelComponent::class)  // Scoped to ViewModel lifecycle
 object RepositoryModule {
     @Provides
-    fun provideProductRepository(): ProductRepository = MockProductRepository()  //ApiProductRepository()
+    fun provideProductRepository(): ProductRepository = CDNProductRepository() //MockProductRepository()
 
     @Provides
     fun provideWishlistRepository(): WishlistRepository = MemoryWishlistRepository()
