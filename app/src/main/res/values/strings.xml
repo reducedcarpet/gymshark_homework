@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">Gymshark Homework</string>
     <string name="products">Products</string>
+    <plurals name="products_found">
+        <item quantity="zero">%d Products Found</item>
+        <item quantity="one">%d Product Found</item>
+        <item quantity="two">%d Products Found</item>
+        <item quantity="few">%d Products Found</item>
+        <item quantity="many">%d Products Found</item>
+        <item quantity="other">%d Products Found</item>
+    </plurals>
 
-    <string name="products_found">%d Products Found</string>
     <string name="search_results">Search Results</string>
 
     <string name="select_size">Select Size</string>

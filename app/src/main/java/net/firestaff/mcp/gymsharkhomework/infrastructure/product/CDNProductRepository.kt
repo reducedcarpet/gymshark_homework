@@ -17,7 +17,7 @@ class CDNProductRepository @Inject constructor() : ProductRepository {
 
     override suspend fun fetchProducts(context: Context): Map<String, Product> {
         val json = fetchJsonData() ?: "{}"
-        val element = JsonParser().parse(json)
+        val element = JsonParser.parseString(json)
         val hitsJson = element.asJsonObject.get("hits").toString()
 
         return parseProductList(hitsJson)

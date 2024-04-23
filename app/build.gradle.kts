@@ -87,10 +87,10 @@ android {
 dependencies {
 
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.converter.gson)
     implementation(libs.glide)
     implementation(libs.coil.compose)
     implementation(libs.compose.runtime)
+    implementation (libs.gson)
 
     implementation("androidx.compose.runtime:runtime-livedata")
     implementation(platform("androidx.compose:compose-bom:2024.04.01"))
