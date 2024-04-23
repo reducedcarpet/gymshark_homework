@@ -9,7 +9,7 @@ import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
 import net.firestaff.mcp.gymsharkhomework.ui.product.SizePickerBottomSheet
 import net.firestaff.mcp.gymsharkhomework.utils.TestTheme
-import net.firestaff.mcp.gymsharkhomework.utils.product
+import net.firestaff.mcp.gymsharkhomework.utils.testProduct
 import org.junit.Rule
 import org.junit.Test
 
@@ -26,7 +26,7 @@ class SizePickerBottomSheetGoldenTest {
             TestTheme {
                 Scaffold(containerColor = Color.White) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
-                        SizePickerBottomSheet(product)
+                        SizePickerBottomSheet(testProduct)
                     }
                 }
             }

@@ -6,7 +6,7 @@ import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.models.Size
 
 
-val product = Product(
+val testProduct = Product(
     "6732609257571",
     "B3A3E",
     true,

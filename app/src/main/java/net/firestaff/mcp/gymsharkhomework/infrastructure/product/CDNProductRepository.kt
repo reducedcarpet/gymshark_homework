@@ -8,12 +8,12 @@ import net.firestaff.mcp.gymsharkhomework.data.CDN_URL
 import net.firestaff.mcp.gymsharkhomework.infrastructure.DataLoader.Companion.parseProductList
 import net.firestaff.mcp.gymsharkhomework.infrastructure.log.LogUtil.debug
 import net.firestaff.mcp.gymsharkhomework.models.Product
-import java.io.BufferedReader
-import java.net.URL
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import javax.inject.Inject
-import javax.net.ssl.HttpsURLConnection
 
 class CDNProductRepository @Inject constructor() : ProductRepository {
+    private val client = OkHttpClient()
 
     override suspend fun fetchProducts(context: Context): Map<String, Product> {
         val json = fetchJsonData() ?: "{}"
@@ -24,28 +24,22 @@ class CDNProductRepository @Inject constructor() : ProductRepository {
     }
 
     private suspend fun fetchJsonData(): String? = withContext(Dispatchers.IO) {
-        var connection: HttpsURLConnection? = null
         try {
-            connection = (URL(CDN_URL).openConnection() as? HttpsURLConnection)?.apply {
-                requestMethod = "GET"
-                connectTimeout = 15000
-                readTimeout = 15000
-                connect()
-            }
+            val request = Request.Builder()
+                .url(CDN_URL)
+                .build()
 
-            val responseCode = connection?.responseCode ?: -1
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
-                connection?.inputStream?.bufferedReader()?.use(BufferedReader::readText)
-            } else {
-                debug(message = "HTTP error response: $responseCode")
-                null
+            client.newCall(request).execute().use { response ->
+                if (response.isSuccessful) {
+                    response.body?.string()
+                } else {
+                    debug(message = "HTTP error response: ${response.code}")
+                    null
+                }
             }
         } catch (e: Exception) {
             debug(message = "Error fetching data ${e.message}")
-            debug(message = "Trace: ${e.stackTraceToString()}")
             null
-        } finally {
-            connection?.disconnect()
         }
     }
 }

@@ -93,7 +93,7 @@ dependencies {
     implementation(libs.gson)
 
     implementation("androidx.compose.runtime:runtime-livedata")
-    implementation(platform("androidx.compose:compose-bom:2024.04.01"))
+    implementation(libs.androidx.compose.bom)
     implementation(libs.androidx.activity.compose)
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
@@ -101,7 +101,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose")
     implementation("androidx.compose.material:material-icons-extended")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation(libs.kotlinx.coroutines.android)
 
     implementation("com.google.dagger:hilt-android")
     kapt(libs.dagger.hilt.compiler)
@@ -128,6 +128,8 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.app.paparazzi)
     testImplementation(libs.mockito.core)
+    testImplementation (libs.androidx.ui.test.junit4)
+    testImplementation (libs.robolectric)
 
 
     androidTestImplementation(libs.androidx.junit)

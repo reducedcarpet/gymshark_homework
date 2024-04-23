@@ -7,7 +7,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.firestaff.mcp.gymsharkhomework.data.testProduct
 import net.firestaff.mcp.gymsharkhomework.models.Product
 import net.firestaff.mcp.gymsharkhomework.services.CurrencyService
 import net.firestaff.mcp.gymsharkhomework.ui.theme.TextStyles
@@ -38,4 +40,13 @@ fun ProductInfoColumn(product: Product) {
             style = TextStyles.bodyMediumBold,
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewProductInfoColumn() {
+
+    ProductInfoColumn(
+        product = testProduct,
+    )
 }

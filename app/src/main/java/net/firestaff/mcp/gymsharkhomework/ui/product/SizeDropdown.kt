@@ -16,6 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import net.firestaff.mcp.gymsharkhomework.R
 import net.firestaff.mcp.gymsharkhomework.models.Size
@@ -26,11 +28,12 @@ import net.firestaff.mcp.gymsharkhomework.ui.theme.white
 
 @Composable
 fun SizeDropdown(sizes: List<Size>, onClick: () -> Unit) {
+    val selectSize = stringResource(id = R.string.select_size)
 
     Box(modifier = Modifier, contentAlignment = Alignment.TopStart) {
         Button(
             onClick = onClick,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().semantics { contentDescription = selectSize },
             colors = ButtonDefaults.buttonColors(
                 containerColor = white,
                 contentColor = black,
@@ -47,7 +50,7 @@ fun SizeDropdown(sizes: List<Size>, onClick: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    stringResource(id = R.string.select_size),
+                    selectSize,
                     style = TextStyles.bodyMedium,
                 )
                 Icon(
